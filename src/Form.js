@@ -15,13 +15,12 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 export default function Form() {
 
     const [number, setNumber] = useState('');
-    const [radioValue, setRadioValue] = useState('');
+    const [radioValue, setRadioValue] = useState('sms');
     const [errors, setErrors] = useState({});
 
 
     const handleNumberChange = (event) => {
         setNumber(event.target.value);
-        console.log(event.target.value.toString().length)
         if (!event.target.value || isNaN(event.target.value)) {
             setErrors((prev) => ({ ...prev, number: 'Please enter a valid number' }));
         } else {
@@ -108,7 +107,7 @@ export default function Form() {
                                     <Typography id="demo-radio-buttons-group-label" sx={{ fontWeight: 700, fontSize: 15, mb: 1, color: '#2c2e30' }}>{RadioTitle}</Typography>
                                     <RadioGroup value={radioValue} onChange={handleRadioChange}
 
-                                        defaultValue="textmessage" sx={{ fontSize: 12 }} className='multi-radiobtn'
+                                        defaultValue="sms" sx={{ fontSize: 12 }} className='multi-radiobtn'
                                     >
                                         <FormControlLabel value="sms" control={<Radio size="small" />} label="Text message"
 
