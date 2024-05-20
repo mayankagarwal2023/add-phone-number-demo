@@ -27,6 +27,12 @@ export default function Form() {
             setErrors((prev) => ({ ...prev, number: '' }));
         }
     };
+    const handleNumberBlur = (event) => {
+
+        if (event.target.value.toString().length != 10) {
+            setErrors((prev) => ({ ...prev, number: 'Please enter a 10 digit number' }));
+        }
+    };
 
     const handleRadioChange = (event) => {
         setRadioValue(event.target.value);
@@ -38,6 +44,9 @@ export default function Form() {
         const newErrors = {};
         if (!number || isNaN(number)) {
             newErrors.number = 'Please enter a valid number';
+        }
+        if (number.length != 10) {
+            newErrors.number = 'Please enter a 10 digit number';
         }
         if (!radioValue) {
             newErrors.radio = 'Please select an option';
@@ -97,6 +106,7 @@ export default function Form() {
                                 type='number'
                                 pattern="[0-9]*"
                                 min={10}
+                                onBlur={handleNumberBlur}
                             />
 
 
@@ -109,12 +119,20 @@ export default function Form() {
 
                                         defaultValue="sms" sx={{ fontSize: 12 }} className='multi-radiobtn'
                                     >
-                                        <FormControlLabel value="sms" control={<Radio size="small" />} label="Text message"
+                                        <FormControlLabel value="sms" control={<Radio size="small" sx={{
+                                            '&, &.Mui-checked': {
+                                                color: '#4b286d',
+                                            },
+                                        }} />} label="Text message"
 
 
 
                                         />
-                                        <FormControlLabel value="call" control={<Radio size="small" />} label="Phone call" />
+                                        <FormControlLabel value="call" control={<Radio size="small" sx={{
+                                            '&, &.Mui-checked': {
+                                                color: '#4b286d',
+                                            },
+                                        }} />} label="Phone call" />
                                         {errors.radio && <p style={{ color: 'red', margin: '0', fontSize: '0.75rem' }}>{errors.radio}</p>}
                                     </RadioGroup>
                                 </FormControl>

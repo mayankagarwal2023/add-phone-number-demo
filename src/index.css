@@ -20,6 +20,3 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0; 
 }
 .multi-radiobtn span.MuiRadio-root{padding: 4px 5px 4px 9px; }
-.multi-radiobtn .css-vqmohf-MuiButtonBase-root-MuiRadio-root.Mui-checked {
-  color:'#4b286d' !important
-}
